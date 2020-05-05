@@ -6,7 +6,7 @@ const mysqlConnection = require("./../config/db.config");
 
 appointmentRoutes.post("/create",[
     check('email').isEmail(),
-    check('phone').isLength({ min: 7})
+    check('phone').isLength({ min: 9})
 
 
 ],  (req, res) =>{
@@ -21,7 +21,12 @@ appointmentRoutes.post("/create",[
             return;
 
         }
-        res.status(200).json({msg: "Sucess"});
+        if(!results.length){
+            res.status(200).json({msg: "Registrado exitosamente"});
+
+        }else{
+            res.status(400).json({msg:"Este usuario ya tiene una cita"});
+        }
 
     })
 });
