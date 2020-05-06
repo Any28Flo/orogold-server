@@ -11,7 +11,7 @@ const PORT = process.env.PORT;
 
 app.use(cors({
     credentials : true,
-    origin: ['http://localhost:3000']
+    origin: ['http://localhost:3000', "https://orogold-client.herokuapp.com/"]
 }));
 
 app.use(bodyParser.json());
